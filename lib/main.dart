@@ -79,9 +79,7 @@ class MyPortfolio extends StatelessWidget {
           },
         ),
       ),
-      home: const ResponsiveLayout(
-        child: HomeScreen(),
-      ),
+      home: const HomeScreen(), // Direct routing to HomeScreen
       builder: (context, child) {
         return ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(

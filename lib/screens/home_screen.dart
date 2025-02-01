@@ -16,42 +16,19 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isDesktop = screenWidth > 768;
-
     return Scaffold(
-      appBar: isDesktop ? null : AppBar(
-        title: const Text('Nithin A'),
-        actions: const [MobileMenu()],
-      ),
-      drawer: isDesktop ? null : const Drawer(
-        child: DrawerContent(),
-      ),
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            controller: ScrollService.scrollController,
-            child: Column(
-              children: [
-                if (isDesktop) const NavigationMenu(isDesktop: true),
-                Header(key: ScrollService.sectionKeys['home']),
-                BioSection(key: ScrollService.sectionKeys['bio']),
-                SkillsSection(key: ScrollService.sectionKeys['skills']),
-                ExperienceSection(key: ScrollService.sectionKeys['experience']),
-                ProjectsSection(key: ScrollService.sectionKeys['projects']),
-                EducationSection(key: ScrollService.sectionKeys['education']),
-                const Footer(),
-              ],
-            ),
-          ),
-          if (isDesktop)
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: NavigationMenu(isDesktop: isDesktop),
-            ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Header(key: ScrollService.sectionKeys['home']),
+            BioSection(key: ScrollService.sectionKeys['bio']),
+            SkillsSection(key: ScrollService.sectionKeys['skills']),
+            ExperienceSection(key: ScrollService.sectionKeys['experience']),
+            ProjectsSection(key: ScrollService.sectionKeys['projects']),
+            EducationSection(key: ScrollService.sectionKeys['education']),
+            const Footer(),
+          ],
+        ),
       ),
     );
   }
